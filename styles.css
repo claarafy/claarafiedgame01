@@ -12,7 +12,7 @@ body {
 }
 #title-button {
   font-family: 'Amatic SC', cursive;
-  font-size: 35px;
+  font-size: 25px;
   border-radius: 10px;
   border: 1px grey dotted;
   background-color: white;
@@ -26,4 +26,22 @@ body {
 }
 #p02-input {
   margin-left: 20px;
+}
+#how-box {
+  text-align: center;
+}
+#how {
+  font-family: 'Amatic SC', cursive;
+  font-size: 25px;
+  background-color: tomato;
+  border-radius: 10px;
+  border: 1px grey dotted;
+}
+#instructions {
+  font-size: 30px;
+  text-align: center;
+  list-style-position:inside
+}
+#instructions ol {
+  padding-left: 0;
 }

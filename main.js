@@ -1,19 +1,28 @@
 var $body = $('body');
-var $title_button = $('#title-button');
+var $titleButton = $('#title-button');
 var $title = $('#title-heading');
-var $title_page = $('#title-page');
-var $p01_name = $("input[name='p01-name']");
-var $p02_name = $("input[name='p02-name']");
+var $titlePage = $('#title-page');
+var $p01Name = $("input[name='p01-name']");
+var $p02Name = $("input[name='p02-name']");
 
 
 //when tittle button is clicked, redo the titles
-$title_button.on('click', redoTitle);
+$titleButton.on('click', clearAll, redoTitle);
+
+function clearAll () { //clear everything in the body
+  $body.empty();
+}
 
 function redoTitle() {
   $title.css({fontSize: '40px'});
-  $title_page.css({marginTop: '10px'})
-  $title_button.remove();
-  $('#p01-input').text('Player 1:  ' + $p01_name.val() );
-  $('#p02-input').text('Player 2:  ' + $p02_name.val() );
-  $body.append('<button id="how">How to Play</button>');
+  $titlePage.css({marginTop: '10px'});
+  $titleButton.remove();
+  $('#p01-input').text('Player 1:  ' + $p01Name.val() );
+  $('#p02-input').text('Player 2:  ' + $p02Name.val() );
+  $body.append('<div id="how-box"><button id="how">How to Play</button></div>');
+  $('#how').one('click', showIns);
+}
+
+function showIns() {
+  $body.append("<div id='instructions'><p>Instructions</p><ol><li>Remember!!</li><li>Wearing what?</li><li>Holding what?</li><li>Standing how?</li><li>Where?</li><li>Read the mind!</li><li>Name it!</li><ol></div>");
 }
