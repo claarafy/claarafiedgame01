@@ -1,0 +1,18 @@
+body {
+  background-color: aqua;
+  font-family: 'Amatic SC', cursive;
+}
+#title-page {
+  text-align: center;
+  margin-top: 200px;
+}
+#title {
+  font-size: 100px;
+}
+#title-button {
+  font-family: 'Amatic SC', cursive;
+  font-size: 35px;
+  border-radius: 10px;
+  border: 1px grey dotted;
+  background-color: white;
+}
