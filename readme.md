@@ -10,6 +10,11 @@ __Project Organization__:
 - [Project Mindmap] (https://coggle.it/diagram/WOF6YeqtdwABC6CE)
 
 
+
+
+
+
+Guide:
 #Header 1
 ##Header 2
 ###Header 3
@@ -28,5 +33,5 @@ function helloWorld() {
 
 ---
 Images:
-![This is an image](documentation/heart.png)
+![This is an image]()
 ---
