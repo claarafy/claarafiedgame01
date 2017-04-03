@@ -15,4 +15,5 @@ function redoTitle() {
   $title_button.remove();
   $('#p01-input').text('Player 1:  ' + $p01_name.val() );
   $('#p02-input').text('Player 2:  ' + $p02_name.val() );
+  $body.append('<button id="how">How to Play</button>');
 }
