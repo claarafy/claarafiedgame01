@@ -1,7 +1,9 @@
+var $body = $('body');
 var $title_button = $('#title-button');
-var $title = $('#title');
+var $title = $('#title-heading');
 var $title_page = $('#title-page');
 
+//when tittle button is clicked, redo the titles
 $title_button.on('click', redoTitle);
 
 function redoTitle() {
