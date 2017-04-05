@@ -80,64 +80,71 @@ body {
 #main-picture {
   width: 400px;
   height: 705px;
-  /*background: url("barebody.png");*/
+  /*background: url("images/barebody.png");*/
 }
-#first {
+#check, #next {
+  font-family: 'Amatic SC', cursive;
+  font-size: 25px;
+  background-color: tomato;
+  border-radius: 10px;
+  border: 1px grey dotted;
+}
+#first, #second, #third {
   text-align: center;
   width: 1200px;
   height: 800px;
   margin: 0 auto;
   border: 1px black solid;
 }
-#first-picture {
+#first-picture, #second-picture, #third-picture {
   width: 400px;
   height: 705px;
-  background: url('barebody.png');
+  background: url('images/barebody.png');
   margin: 0 auto;
   border: 1px black solid;
 }
 #corr-head {
   width: 400px; height: 100px;
   /*border: 0.5px black solid;*/
-  background: url('Head_Correct.png');
+  background: url('images/Head_Correct.png');
 }
 #corr-face {
   width: 400px; height: 100px;
   /*border: 0.5px black solid;*/
-  background: url('Face_Correct.png');
+  background: url('images/Face_Correct.png');
 }
 #corr-upper {
   width: 400px; height: 200px;
   /*border: 0.5px black solid;*/
-  background: url('Upper_Correct.png');
+  background: url('images/Upper_Correct.png');
 }
 #corr-lower {
   width: 400px; height: 200px;
   /*border: 0.5px black solid;*/
-  background: url('Lower_Correct.png');
+  background: url('images/Lower_Correct.png');
 }
 #corr-feet {
   width: 400px; height: 100px;
   /*border: 0.5px black solid;*/
-  background: url('Feet_Correct.png');
+  background: url('images/Feet_Correct.png');
 }
-#head {
+.head {
   width: 400px; height: 100px;
   border: 0.5px black solid;
 }
-#face {
+.face {
   width: 400px; height: 100px;
   border: 0.5px black solid;
 }
-#upper {
+.upper {
   width: 400px; height: 200px;
   border: 0.5px black solid;
 }
-#lower {
+.lower {
   width: 400px; height: 200px;
   border: 0.5px black solid;
 }
-#feet {
+.feet {
   width: 400px; height: 100px;
   border: 0.5px black solid;
 }

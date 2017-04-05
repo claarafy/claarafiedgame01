@@ -8,12 +8,13 @@ var currentPlayer;
 var $p01Name = $("input[name='p01-name']");
 var $p02Name = $("input[name='p02-name']");
 var correct = [
-    { name:'head', img: "Head_Correct.png" },
-    { name:'face', img: "Face_Correct.png"},
-    { name:'upper', img: "Upper_Correct.png"},
-    { name:'lower', img: "Lower_Correct.png"},
-    { name:'feet', img: "Feet_Correct.png"}
+    { name:'head', img: "images/Head_Correct.png" },
+    { name:'face', img: "images/Face_Correct.png"},
+    { name:'upper', img: "images/Upper_Correct.png"},
+    { name:'lower', img: "images/Lower_Correct.png"},
+    { name:'feet', img: "images/Feet_Correct.png"}
   ];
+var playerChoices = [];
 
 //when "jQuery link" button is clicked, redo the titles
 var $body = $('body');
@@ -86,11 +87,13 @@ function firstRound() {
 //who's turn is it
 function player01Turn() {
   currentPlayer = $p01Name.val();
-  $('#p01-input').css({fontSize: '40px', color: 'tomato', fontWeight: '800'});
+  $('#p01-input').css({fontSize: '40px', color: 'tomato', fontWeight: '800'});//emphasize p01
+  $('#p02-input').css({fontSize: '25px', color: 'black', fontWeight: '200'});
 }
 function player02Turn() {
   currentPlayer = $p02Name.val();
-  $('#p02-input').css({fontSize: '40px', color: 'tomato', fontWeight: '800'});
+  $('#p02-input').css({fontSize: '40px', color: 'tomato', fontWeight: '800'});//emphasize p02
+  $('#p01-input').css({fontSize: '25px', color: 'black', fontWeight: '200'});
 }
 
 //countdown first round
@@ -112,19 +115,20 @@ function showScore01() {
   $('#title-page').append('<div id="player01-score">' + $p01Name.val()+ "'s score: " + game.player01.score + '</div>');
   $('#title-page').append('<div id="player02-score">' + $p02Name.val() + "'s score: " + game.player02.score + '</div>');
   $('#title-page').append('<button id="check">Check</button>');
-  $('#check').one('click', checkHeads)
+  $('#title-page').append('<button id="next">Next Round!</button>');
+  $('#check').one('click', checkHeads);
+  $('#next').one('click', secondRound);
 }
 //display head options to pick from
 function displayHeads() {
-  $('#first').append('<div id="correct-head" class="head-option"><img src="Head_Correct.png"</div>');
-  $('#first').append('<div class="head-option"><img src="Head_01.png"</div>');
-  $('#first').append('<div class="head-option"><img src="Head_02.png"</div>');
-  $('#first').append('<div class="head-option"><img src="Head_03.png"</div>');
-  $('#first').append('<div class="head-option"><img src="Head_04.png"</div>');
-  $('#first').append('<div class="head-option"><img src="Head_05.png"</div>');
+  $('#first').append('<div id="correct-head" class="head-option"><img src="images/Head_Correct.png"</div>');
+  $('#first').append('<div class="head-option"><img src="images/Head_01.png"</div>');
+  $('#first').append('<div class="head-option"><img src="images/Head_02.png"</div>');
+  $('#first').append('<div class="head-option"><img src="images/Head_03.png"</div>');
+  $('#first').append('<div class="head-option"><img src="images/Head_04.png"</div>');
+  $('#first').append('<div class="head-option"><img src="images/Head_05.png"</div>');
 }
 //check if the clicked head is the correct answer
-var playerChoices = [];
 var playerHeadChoices = [];
 function storeHeadChoices() {
   $('.head-option').on('click', function() {
@@ -139,15 +143,83 @@ function checkHeads() { //when check button is clicked, check if the last click 
     console.log("clicked!")
     if ( playerHeadChoices[playerHeadChoices.length-1] == correct[0].img && currentPlayer == $p02Name.val()) { //if player 2 is playing, and picks the correct answer add score
       console.log('CORRECTTT!!!');
-      $('#head').html('<div><img src= ' + playerHeadChoices[playerHeadChoices.length-1] + '></div>');
+      $('.head').html('<div><img src= ' + playerHeadChoices[playerHeadChoices.length-1] + '></div>');
       game.player02.score = game.player02.score + 1;
       $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
       playerChoices.push(playerHeadChoices[playerHeadChoices.length-1]);
       console.log(playerChoices)
     } else if ( playerHeadChoices[playerHeadChoices.length-1] != correct[0].img && currentPlayer == $p02Name.val()) { //if player 2 is playing, and picks the wrong answer minus score
       console.log('NOOOOOO!');
-      $('#head').html('<div><img src= ' + playerHeadChoices[playerHeadChoices.length-1] + '></div>');
+      $('.head').html('<div><img src= ' + playerHeadChoices[playerHeadChoices.length-1] + '></div>');
       game.player02.score = game.player02.score - 2;
       $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
+      playerChoices.push(playerHeadChoices[playerHeadChoices.length-1]);
+      console.log(playerChoices);
     }
+}
+
+function secondRound() {
+  $('#first').addClass('hidden');
+  $('#second').removeClass('hidden');
+  $('.head').html('<div><img src= ' + playerChoices[0] + '></div>')
+  player01Turn();
+  countdown01();
+  showScore02();
+  displayFaces();
+  storeFaceChoices();
+}
+function showScore02() {
+  // $('#title-page').append('<div id="player01-score">' + $p01Name.val()+ "'s score: " + game.player01.score + '</div>');
+  // $('#title-page').append('<div id="player02-score">' + $p02Name.val() + "'s score: " + game.player02.score + '</div>');
+  // $('#title-page').append('<button id="check">Check</button>');
+  // $('#title-page').append('<button id="next">Next Round!</button>');
+  $('#check').off('click', checkHeads);
+  $('#check').one('click', checkFaces);
+  $('#next').off('click', secondRound);
+  $('#next').one('click', thirdRound);
+}
+
+function displayFaces() {
+  $('#second').append('<div id="correct-face" class="face-option"><img src="images/Face_Correct.png"</div>');
+  $('#second').append('<div class="face-option"><img src="images/Face_01.png"</div>');
+  $('#second').append('<div class="face-option"><img src="images/Face_02.png"</div>');
+  $('#second').append('<div class="face-option"><img src="images/Face_03.png"</div>');
+  $('#second').append('<div class="face-option"><img src="images/Face_04.png"</div>');
+  $('#second').append('<div class="face-option"><img src="images/Face_05.png"</div>');
+}
+
+var playerFaceChoices = [];
+function storeFaceChoices() {
+  $('.face-option').on('click', function() {
+    if (timer != 0) {
+    playerFaceChoices.push($(this).children().attr('src'));
+    console.log(playerFaceChoices);
+    }
+  })
+}
+
+function checkFaces() { //when check button is clicked, check if the last click was correct, either correct or wrong, append the item and store it to the choices array
+    console.log("clicked!")
+    if ( playerFaceChoices[playerFaceChoices.length-1] == correct[1].img && currentPlayer == $p01Name.val()) {
+      console.log('CORRECTTT!!!');
+      $('.face').html('<div><img src= ' + playerFaceChoices[playerFaceChoices.length-1] + '></div>');
+      game.player01.score = game.player01.score + 1;
+      $('#player01-score').text($p01Name.val()+ "'s score: " + game.player01.score);
+      playerChoices.push(playerFaceChoices[playerFaceChoices.length-1]);
+      console.log(playerChoices)
+    } else if ( playerFaceChoices[playerFaceChoices.length-1] != correct[1].img && currentPlayer == $p01Name.val()) {
+      console.log('NOOOOOO!');
+      $('.face').html('<div><img src= ' + playerFaceChoices[playerFaceChoices.length-1] + '></div>');
+      game.player01.score = game.player01.score - 2;
+      $('#player01-score').text($p01Name.val()+ "'s score: " + game.player01.score);
+      playerChoices.push(playerFaceChoices[playerFaceChoices.length-1]);
+      console.log(playerChoices);
+    }
+}
+
+function thirdRound() {
+  $('#second').addClass('hidden');
+  $('#third').removeClass('hidden');
+  $('.head').html('<div><img src= ' + playerChoices[0] + '></div>');
+  $('.face').html('<div><img src= ' + playerChoices[1] + '></div>');
 }
