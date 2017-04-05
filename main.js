@@ -67,6 +67,7 @@ function countdown() {
 function firstRound() {
   $('#first').removeClass('hidden');
   player02Turn();
+  viewScore();
   displayHeads();
   checkHeads();
 }
@@ -80,7 +81,11 @@ function player02Turn() {
   currentPlayer = $p02Name.val();
   $('#p02-input').css({fontSize: '40px', color: 'tomato', fontWeight: '800'});
 }
-
+//view scoreboard
+function viewScore() {
+  $('.player-input').append('<br>' + $p01Name.val()+ "'s score: 0");
+  $('.player-input').append('<br>' + $p02Name.val() + "'s score: 0");
+}
 var correct = [
     { name:'head', img: "Head_Correct.png" },
     { name:'face', img: "Face_Correct.png"},
@@ -100,9 +105,9 @@ function displayHeads() {
 function checkHeads() {
   $('.head-option').on('click', function() {
     if ($(this).children().attr('src') == correct[0].img) {
-      alert('CORRECTTT!!!')
+      alert('CORRECTTT!!!');
     } else {
-      alert('NOOOOOO!')
+      alert('NOOOOOO!');
     }
   })
 }
