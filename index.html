@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Project 01: $('body').append(whoYouAre)</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js" charset="utf-8"></script>
   </head>
 
@@ -18,14 +18,30 @@
       <button id="title-button">Click to link jQuery CDN first...</button>
     </div>
 
-    <div id="container"></div>
+    <div class="container"></div>
 
-      <div id="main" class="hidden">
-        <div class="timer">Time: 15</div>
-        <div id=#main-picture>
-          <img src="mainpic.png" alt="">
-        </div>
+    <div id="main" class="hidden">
+      <div class="timer timer01">Time: 3</div>
+      <div id='main-picture'>
+        <div id="corr-head" value="">HEAD</div>
+        <div id="corr-face" value="">FACE</div>
+        <div id="corr-upper" value="">UPPERBODY</div>
+        <div id="corr-lower" value="">LOWERBODY</div>
+        <div id="corr-feet" value="">FEET</div>
       </div>
+    </div>
+
+    <div id="first" class="hidden">
+      <div class="timer timer02">Time: 3</div>
+      <div id="first-picture">
+        <div id="head" value="">HEAD</div>
+        <div id="face" value="">FACE</div>
+        <div id="upper" value="">UPPERBODY</div>
+        <div id="lower" value="">LOWERBODY</div>
+        <div id="feet" value="">FEET</div>
+      </div>
+    </div>
+
 
     <script src="main.js" charset="utf-8"></script>
   </body>

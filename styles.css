@@ -57,36 +57,87 @@ body {
   border: 1px grey dotted;
 }
 #main-picture {
-  border: 3px black solid;
-  background: url('mainpic.png'); /*temporary*/
-  width: 627px; /*temporary*/
-  height: 569px; /*temporary*/
+  border: 1px black solid;
+  width: 800px;
+  height: 800px;
   margin: 0 auto;
-  /*display: inline-block;*/
   text-align: center;
 }
 .timer {
   text-align: center;
-  font-size: 20px;
-}
-#main {
-  background-color: tomato;
-  text-align: center;
-  width: 800px;
-  height: 800px;
-  margin: 0 auto;
-}
-#main-picture {
-  width: 400px;
-  height: 700px;
-}
-#main img {
-  margin-top: 20px;
+  font-size: 25px;
 }
 .hidden {
   display: none;
 }
-#main .timer {
-  font-size: 25px;
-  padding-top: 20px;
+#main {
+  text-align: center;
+  width: 1200px;
+  height: 800px;
+  margin: 0 auto;
+  border: 1px black solid;
+}
+#main-picture {
+  width: 400px;
+  height: 705px;
+  /*background: url("barebody.png");*/
+}
+#first {
+  text-align: center;
+  width: 1200px;
+  height: 800px;
+  margin: 0 auto;
+  border: 1px black solid;
+}
+#first-picture {
+  width: 400px;
+  height: 705px;
+  background: url('barebody.png');
+  margin: 0 auto;
+  border: 1px black solid;
+}
+#corr-head {
+  width: 400px; height: 100px;
+  /*border: 0.5px black solid;*/
+  background: url('Head_Correct.png');
+}
+#corr-face {
+  width: 400px; height: 100px;
+  /*border: 0.5px black solid;*/
+  background: url('Face_Correct.png');
+}
+#corr-upper {
+  width: 400px; height: 200px;
+  /*border: 0.5px black solid;*/
+  background: url('Upper_Correct.png');
+}
+#corr-lower {
+  width: 400px; height: 200px;
+  /*border: 0.5px black solid;*/
+  background: url('Lower_Correct.png');
+}
+#corr-feet {
+  width: 400px; height: 100px;
+  /*border: 0.5px black solid;*/
+  background: url('Feet_Correct.png');
+}
+#head {
+  width: 400px; height: 100px;
+  border: 0.5px black solid;
+}
+#face {
+  width: 400px; height: 100px;
+  border: 0.5px black solid;
+}
+#upper {
+  width: 400px; height: 200px;
+  border: 0.5px black solid;
+}
+#lower {
+  width: 400px; height: 200px;
+  border: 0.5px black solid;
+}
+#feet {
+  width: 400px; height: 100px;
+  border: 0.5px black solid;
 }
