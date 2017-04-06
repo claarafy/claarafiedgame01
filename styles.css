@@ -41,7 +41,7 @@ body {
 #instructions {
   font-size: 30px;
   text-align: center;
-  list-style-position:inside;
+  list-style-position:inside
 }
 #instructions ol {
   padding-left: 0;
@@ -150,4 +150,31 @@ body {
 .feet {
   width: 400px; height: 100px;
   border: 0.5px black solid;
+}
+#playerBody {
+  float: left;
+  display: inline-block;
+}
+#checkAnswer {
+  float: left;
+  display: inline-block;
+}
+#solution {
+  float: left;
+  display: inline-block;
+}
+#headAnswer, #faceAnswer, #feetAnswer {
+  width: 200px;
+  height: 100px;
+  border: 1px black solid;
+}
+#upperAnswer, #lowerAnswer {
+  width: 200px;
+  height: 200px;
+  border: 1px black solid;
+}
+#nameAnswer {
+  width: 200px;
+  height: 50px;
+  border: 1px black solid;
 }
