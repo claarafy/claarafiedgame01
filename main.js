@@ -12,7 +12,8 @@ var correct = [
     { name:'face', img: "images/Face_Correct.png"},
     { name:'upper', img: "images/Upper_Correct.png"},
     { name:'lower', img: "images/Lower_Correct.png"},
-    { name:'feet', img: "images/Feet_Correct.png"}
+    { name:'feet', img: "images/Feet_Correct.png"},
+    { name: 'characterName', value: "correct"}
   ];
 var playerChoices = [];
 
@@ -142,18 +143,25 @@ function storeHeadChoices() {
 function checkHeads() { //when check button is clicked, check if the last click was correct, either correct or wrong, append the item and store it to the choices array
     console.log("checkHeads running!")
     if ( playerHeadChoices[playerHeadChoices.length-1] == correct[0].img && currentPlayer == $p02Name.val()) { //if player 2 is playing, and picks the correct answer add score
-      console.log('CORRECTTT!!!');
+      console.log('CORRECT HEAD!!');
       $('.head').html('<div><img src= ' + playerHeadChoices[playerHeadChoices.length-1] + '></div>');
       game.player02.score = game.player02.score + 1;
       $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
       playerChoices.push(playerHeadChoices[playerHeadChoices.length-1]);
       console.log(playerChoices)
-    } else if ( playerHeadChoices[playerHeadChoices.length-1] != correct[0].img && currentPlayer == $p02Name.val()) { //if player 2 is playing, and picks the wrong answer minus score
-      console.log('NOOOOOO!');
+    } else if ( playerHeadChoices[playerHeadChoices.length-1] != correct[0].img && playerHeadChoices.length != 0 && currentPlayer == $p02Name.val()) { //if player 2 is playing, and picks the wrong answer minus score
+      console.log('WRONG HEAD!');
       $('.head').html('<div><img src= ' + playerHeadChoices[playerHeadChoices.length-1] + '></div>');
       game.player02.score = game.player02.score - 2;
       $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
       playerChoices.push(playerHeadChoices[playerHeadChoices.length-1]);
+      console.log(playerChoices);
+    } else if ( playerHeadChoices.length == 0 && currentPlayer == $p02Name.val()) {
+      console.log("You didn't pick any head!")
+      $('.head').html('<div><img src="images/Head_No.png"></div>');
+      game.player02.score = game.player02.score - 2;
+      $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
+      playerChoices.push("images/Head_No.png");
       console.log(playerChoices);
     }
 }
@@ -207,12 +215,19 @@ function checkFaces() { //when check button is clicked, check if the last click 
       $('#player01-score').text($p01Name.val()+ "'s score: " + game.player01.score);
       playerChoices.push(playerFaceChoices[playerFaceChoices.length-1]);
       console.log(playerChoices)
-    } else if ( playerFaceChoices[playerFaceChoices.length-1] != correct[1].img && currentPlayer == $p01Name.val()) {
+    } else if ( playerFaceChoices[playerFaceChoices.length-1] != correct[1].img && playerFaceChoices.length != 0 && currentPlayer == $p01Name.val()) {
       console.log('NOOOOOO!');
       $('.face').html('<div><img src= ' + playerFaceChoices[playerFaceChoices.length-1] + '></div>');
       game.player01.score = game.player01.score - 2;
       $('#player01-score').text($p01Name.val()+ "'s score: " + game.player01.score);
       playerChoices.push(playerFaceChoices[playerFaceChoices.length-1]);
+      console.log(playerChoices);
+    } else if ( playerFaceChoices.length == 0 && currentPlayer == $p01Name.val()) {
+      console.log("You didn't pick anything!")
+      $('.face').html('<div><img src="images/Face_No.png"></div>');
+      game.player01.score = game.player01.score - 2;
+      $('#player01-score').text($p01Name.val()+ "'s score: " + game.player01.score);
+      playerChoices.push("images/Face_No.png");
       console.log(playerChoices);
     }
 }
@@ -264,12 +279,19 @@ function checkUppers() { //when check button is clicked, check if the last click
     $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
     playerChoices.push(playerUpperChoices[playerUpperChoices.length-1]);
     console.log(playerChoices)
-  } else if ( playerUpperChoices[playerUpperChoices.length-1] != correct[2].img && currentPlayer == $p02Name.val()) {
+  } else if ( playerUpperChoices[playerUpperChoices.length-1] != correct[2].img && playerUpperChoices.length != 0 && currentPlayer == $p02Name.val()) {
     console.log('NOOOOOO!');
     $('.upper').html('<div><img src= ' + playerUpperChoices[playerUpperChoices.length-1] + '></div>');
     game.player02.score = game.player02.score - 2;
     $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
     playerChoices.push(playerUpperChoices[playerUpperChoices.length-1]);
+    console.log(playerChoices);
+  } else if ( playerUpperChoices.length == 0 && currentPlayer == $p02Name.val()) {
+    console.log("You didn't pick any upper!")
+    $('.upper').html('<div><img src="images/Upper_No.png"></div>');
+    game.player02.score = game.player02.score - 2;
+    $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
+    playerChoices.push("images/Upper_No.png");
     console.log(playerChoices);
   }
 }
@@ -321,12 +343,19 @@ function checkLowers() {
     $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
     playerChoices.push(playerLowerChoices[playerLowerChoices.length-1]);
     console.log(playerChoices)
-  } else if ( playerLowerChoices[playerLowerChoices.length-1] != correct[3].img && currentPlayer == $p02Name.val()) {
+  } else if ( playerLowerChoices[playerLowerChoices.length-1] != correct[3].img && playerLowerChoices.length != 0 && currentPlayer == $p02Name.val()) {
     console.log('NOOOOOO!');
     $('.lower').html('<div><img src= ' + playerLowerChoices[playerLowerChoices.length-1] + '></div>');
     game.player02.score = game.player02.score - 2;
     $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
     playerChoices.push(playerLowerChoices[playerLowerChoices.length-1]);
+    console.log(playerChoices);
+  } else if ( playerLowerChoices.length == 0 && currentPlayer == $p02Name.val()) {
+    console.log("You didn't pick any upper!")
+    $('.lower').html('<div><img src="images/Lower_No.png"></div>');
+    game.player02.score = game.player02.score - 2;
+    $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
+    playerChoices.push("images/Lower_No.png");
     console.log(playerChoices);
   }
 }
@@ -352,12 +381,12 @@ function showScore05() {
 }
 
 function displayFeets() {
-  $('#fifth').append('<div id="correct-feet" class="feet-option"><img src="images/Feet_Correct.png"</div>');
-  $('#fifth').append('<div class="feet-option"><img src="images/Feet_01.png"</div>');
-  $('#fifth').append('<div class="feet-option"><img src="images/Feet_02.png"</div>');
-  $('#fifth').append('<div class="feet-option"><img src="images/Feet_03.png"</div>');
-  $('#fifth').append('<div class="feet-option"><img src="images/Feet_04.png"</div>');
-  $('#fifth').append('<div class="feet-option"><img src="images/Feet_05.png"</div>');
+  $('#fifth').append('<div id="correct-feet" class="feet-option"><img src="images/Feet_Correct.png"></div>');
+  $('#fifth').append('<div class="feet-option"><img src="images/Feet_01.png"></div>');
+  $('#fifth').append('<div class="feet-option"><img src="images/Feet_02.png"></div>');
+  $('#fifth').append('<div class="feet-option"><img src="images/Feet_03.png"></div>');
+  $('#fifth').append('<div class="feet-option"><img src="images/Feet_04.png"></div>');
+  $('#fifth').append('<div class="feet-option"><img src="images/Feet_05.png"></div>');
 }
 
 var playerFeetChoices = [];
@@ -378,15 +407,68 @@ function checkFeets() {
     $('#player01-score').text($p01Name.val()+ "'s score: " + game.player01.score);
     playerChoices.push(playerFeetChoices[playerFeetChoices.length-1]);
     console.log(playerChoices)
-  } else if ( playerFeetChoices[playerFeetChoices.length-1] != correct[4].img && currentPlayer == $p01Name.val()) {
+  } else if ( playerFeetChoices[playerFeetChoices.length-1] != correct[4].img && playerFeetChoices.length != 0 && currentPlayer == $p01Name.val()) {
     console.log('NOOOOOO!');
     $('.feet').html('<div><img src= ' + playerFeetChoices[playerFeetChoices.length-1] + '></div>');
     game.player01.score = game.player01.score - 2;
     $('#player01-score').text($p01Name.val()+ "'s score: " + game.player01.score);
     playerChoices.push(playerFeetChoices[playerFeetChoices.length-1]);
     console.log(playerChoices);
+  } else if ( playerFeetChoices.length == 0 && currentPlayer == $p01Name.val()) {
+    console.log("You didn't pick any upper!")
+    $('.feet').html('<div><img src="images/Feet_No.png"></div>');
+    game.player01.score = game.player01.score - 2;
+    $('#player01-score').text($p01Name.val()+ "'s score: " + game.player01.score);
+    playerChoices.push("images/Feet_No.png");
+    console.log(playerChoices);
   }
 }
 function sixthRound() {
-  console.log("sixth!");
+  $('#fifth').addClass('hidden');
+  $('#sixth').removeClass('hidden');
+  $('.head').html('<div><img src= ' + playerChoices[0] + '></div>');
+  $('.face').html('<div><img src= ' + playerChoices[1] + '></div>');
+  $('.upper').html('<div><img src= ' + playerChoices[2] + '></div>');
+  $('.lower').html('<div><img src= ' + playerChoices[3] + '></div>');
+  $('.feet').html('<div><img src= ' + playerChoices[4] + '></div>');
+  player01Turn();
+  displayNames();
+  showScore06();
+  storeNameChoices();
 }
+
+function showScore06() {
+  $('#check').off('click', checkFeets);
+  $('#check').one('click', checkNames);
+  $('#next').off('click', sixthRound);
+  $('#next').one('click', scoreRound);
+}
+
+function displayNames() {
+  $('#sixth').append('<div class="name-option"><form><input type="radio" name="name-option" value="correct">Skaflowne<br><input type="radio" name="name-option" value="">Skuflowne<br><input type="radio" name="name-option" value="">Skeflowne<br><input type="radio" name="name-option" value="">Skaaflowne<br><input type="radio" name="name-option" value="">Skflowne<br></form></div>');
+}
+
+var playerNameChoices = [];
+function storeNameChoices() {
+  $('.name-option').on('click', 'input', function () {
+    playerNameChoices.push($(this).attr('value'))
+  })
+}
+function checkNames() {
+  if ( playerNameChoices[playerNameChoices.length - 1] == "correct" && currentPlayer == $p01Name.val()) {
+    console.log('Correct Name!');
+    game.player01.score = game.player01.score + 1;
+    $('#player01-score').text($p01Name.val()+ "'s score: " + game.player01.score);
+    playerChoices.push(playerNameChoices[playerNameChoices.length-1]);
+    console.log(playerChoices);
+  } else if ( playerNameChoices[playerNameChoices.length-1] == "" && playerNameChoices.length != 0 && currentPlayer == $p01Name.val()) {
+    console.log('NOOOOOO!');
+    game.player01.score = game.player01.score - 2;
+    $('#player01-score').text($p01Name.val()+ "'s score: " + game.player01.score);
+    playerChoices.push(playerNameChoices[playerNameChoices.length-1]);
+    console.log(playerChoices);
+  }
+}
+// function scoreRound() {
+//
+// }

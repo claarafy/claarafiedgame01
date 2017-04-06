@@ -41,7 +41,7 @@ body {
 #instructions {
   font-size: 30px;
   text-align: center;
-  list-style-position:inside
+  list-style-position:inside;
 }
 #instructions ol {
   padding-left: 0;
@@ -82,6 +82,9 @@ body {
   height: 705px;
   /*background: url("images/barebody.png");*/
 }
+#theName {
+  font-weight: 400;
+}
 #check, #next {
   font-family: 'Amatic SC', cursive;
   font-size: 25px;
@@ -89,14 +92,14 @@ body {
   border-radius: 10px;
   border: 1px grey dotted;
 }
-#first, #second, #third, #fourth, #fifth {
+#first, #second, #third, #fourth, #fifth, #sixth {
   text-align: center;
   width: 1200px;
   height: 800px;
   margin: 0 auto;
   border: 1px black solid;
 }
-#first-picture, #second-picture, #third-picture, #fourth-picture, #fifth-picture {
+#first-picture, #second-picture, #third-picture, #fourth-picture, #fifth-picture, #sixth-picture {
   width: 400px;
   height: 705px;
   background: url('images/barebody.png');
