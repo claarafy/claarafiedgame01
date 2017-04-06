@@ -260,7 +260,7 @@ function checkUppers() { //when check button is clicked, check if the last click
   if ( playerUpperChoices[playerUpperChoices.length-1] == correct[2].img && currentPlayer == $p02Name.val()) {
     console.log('CORRECTTT!!!');
     $('.upper').html('<div><img src= ' + playerUpperChoices[playerUpperChoices.length-1] + '></div>');
-    game.player01.score = game.player01.score + 1;
+    game.player02.score = game.player02.score + 1;
     $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
     playerChoices.push(playerUpperChoices[playerUpperChoices.length-1]);
     console.log(playerChoices)
@@ -272,9 +272,69 @@ function checkUppers() { //when check button is clicked, check if the last click
     playerChoices.push(playerUpperChoices[playerUpperChoices.length-1]);
     console.log(playerChoices);
   }
-
 }
 
 function fourthRound() {
-  console.log("This is the fourth!")
+  $('#third').addClass('hidden');
+  $('#fourth').removeClass('hidden');
+  $('.head').html('<div><img src= ' + playerChoices[0] + '></div>');
+  $('.face').html('<div><img src= ' + playerChoices[1] + '></div>');
+  $('.upper').html('<div><img src= ' + playerChoices[2] + '></div>');
+  player02Turn();
+  countdown01();
+  showScore04();
+  displayLowers();
+  storeLowerChoices();
+}
+
+function showScore04() {
+  $('#check').off('click', checkUppers);
+  $('#check').one('click', checkLowers);
+  $('#next').off('click', fourthRound);
+  $('#next').one('click', fifthRound);
+}
+
+function displayLowers() {
+  $('#fourth').append('<div id="correct-lower" class="lower-option"><img src="images/Lower_correct.png"</div>');
+  $('#fourth').append('<div class="lower-option"><img src="images/Lower_01.png"</div>');
+  $('#fourth').append('<div class="lower-option"><img src="images/Lower_02.png"</div>');
+  $('#fourth').append('<div class="lower-option"><img src="images/Lower_03.png"</div>');
+  $('#fourth').append('<div class="lower-option"><img src="images/Lower_04.png"</div>');
+  $('#fourth').append('<div class="lower-option"><img src="images/Lower_05.png"</div>');
+}
+
+var playerLowerChoices = [];
+function storeLowerChoices() {
+  $('.lower-option').on('click', function() {
+    if (timer != 0) {
+    playerLowerChoices.push($(this).children().attr('src'));
+    console.log(playerLowerChoices);
+    }
+  })
+}
+function checkLowers() {
+  console.log("checkLowers running")
+  if ( playerLowerChoices[playerLowerChoices.length-1] == correct[3].img && currentPlayer == $p02Name.val()) {
+    console.log('CORRECTTT!!!');
+    $('.lower').html('<div><img src= ' + playerLowerChoices[playerLowerChoices.length-1] + '></div>');
+    game.player02.score = game.player02.score + 1;
+    $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
+    playerChoices.push(playerLowerChoices[playerLowerChoices.length-1]);
+    console.log(playerChoices)
+  } else if ( playerLowerChoices[playerLowerChoices.length-1] != correct[3].img && currentPlayer == $p02Name.val()) {
+    console.log('NOOOOOO!');
+    $('.lower').html('<div><img src= ' + playerLowerChoices[playerLowerChoices.length-1] + '></div>');
+    game.player02.score = game.player02.score - 2;
+    $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
+    playerChoices.push(playerLowerChoices[playerLowerChoices.length-1]);
+    console.log(playerChoices);
+  }
+}
+function fifthRound() {
+  $('#fourth').addClass('hidden');
+  $('#fifth').removeClass('hidden');
+  $('.head').html('<div><img src= ' + playerChoices[0] + '></div>');
+  $('.face').html('<div><img src= ' + playerChoices[1] + '></div>');
+  $('.upper').html('<div><img src= ' + playerChoices[2] + '></div>');
+  $('.lower').html('<div><img src= ' + playerChoices[3] + '></div>');
 }

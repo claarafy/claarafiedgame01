@@ -89,14 +89,14 @@ body {
   border-radius: 10px;
   border: 1px grey dotted;
 }
-#first, #second, #third {
+#first, #second, #third, #fourth, #fifth {
   text-align: center;
   width: 1200px;
   height: 800px;
   margin: 0 auto;
   border: 1px black solid;
 }
-#first-picture, #second-picture, #third-picture {
+#first-picture, #second-picture, #third-picture, #fourth-picture, #fifth-picture {
   width: 400px;
   height: 705px;
   background: url('images/barebody.png');
