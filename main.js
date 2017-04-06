@@ -295,7 +295,7 @@ function showScore04() {
 }
 
 function displayLowers() {
-  $('#fourth').append('<div id="correct-lower" class="lower-option"><img src="images/Lower_correct.png"</div>');
+  $('#fourth').append('<div id="correct-lower" class="lower-option"><img src="images/Lower_Correct.png"</div>');
   $('#fourth').append('<div class="lower-option"><img src="images/Lower_01.png"</div>');
   $('#fourth').append('<div class="lower-option"><img src="images/Lower_02.png"</div>');
   $('#fourth').append('<div class="lower-option"><img src="images/Lower_03.png"</div>');
@@ -337,4 +337,56 @@ function fifthRound() {
   $('.face').html('<div><img src= ' + playerChoices[1] + '></div>');
   $('.upper').html('<div><img src= ' + playerChoices[2] + '></div>');
   $('.lower').html('<div><img src= ' + playerChoices[3] + '></div>');
+  player01Turn();
+  countdown01();
+  showScore05();
+  displayFeets();
+  storeFeetChoices();
+}
+
+function showScore05() {
+  $('#check').off('click', checkLowers);
+  $('#check').one('click', checkFeets);
+  $('#next').off('click', fifthRound);
+  $('#next').one('click', sixthRound);
+}
+
+function displayFeets() {
+  $('#fifth').append('<div id="correct-feet" class="feet-option"><img src="images/Feet_Correct.png"</div>');
+  $('#fifth').append('<div class="feet-option"><img src="images/Feet_01.png"</div>');
+  $('#fifth').append('<div class="feet-option"><img src="images/Feet_02.png"</div>');
+  $('#fifth').append('<div class="feet-option"><img src="images/Feet_03.png"</div>');
+  $('#fifth').append('<div class="feet-option"><img src="images/Feet_04.png"</div>');
+  $('#fifth').append('<div class="feet-option"><img src="images/Feet_05.png"</div>');
+}
+
+var playerFeetChoices = [];
+function storeFeetChoices() {
+  $('.feet-option').on('click', function() {
+    if (timer != 0) {
+    playerFeetChoices.push($(this).children().attr('src'));
+    console.log(playerFeetChoices);
+    }
+  })
+}
+function checkFeets() {
+  console.log("checkFeets running")
+  if ( playerFeetChoices[playerFeetChoices.length-1] == correct[4].img && currentPlayer == $p01Name.val()) {
+    console.log('CORRECTTT!!!');
+    $('.feet').html('<div><img src= ' + playerFeetChoices[playerFeetChoices.length-1] + '></div>');
+    game.player01.score = game.player01.score + 1;
+    $('#player01-score').text($p01Name.val()+ "'s score: " + game.player01.score);
+    playerChoices.push(playerFeetChoices[playerFeetChoices.length-1]);
+    console.log(playerChoices)
+  } else if ( playerFeetChoices[playerFeetChoices.length-1] != correct[4].img && currentPlayer == $p01Name.val()) {
+    console.log('NOOOOOO!');
+    $('.feet').html('<div><img src= ' + playerFeetChoices[playerFeetChoices.length-1] + '></div>');
+    game.player01.score = game.player01.score - 2;
+    $('#player01-score').text($p01Name.val()+ "'s score: " + game.player01.score);
+    playerChoices.push(playerFeetChoices[playerFeetChoices.length-1]);
+    console.log(playerChoices);
+  }
+}
+function sixthRound() {
+  console.log("sixth!");
 }
