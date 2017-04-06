@@ -140,7 +140,7 @@ function storeHeadChoices() {
 }
 //
 function checkHeads() { //when check button is clicked, check if the last click was correct, either correct or wrong, append the item and store it to the choices array
-    console.log("clicked!")
+    console.log("checkHeads running!")
     if ( playerHeadChoices[playerHeadChoices.length-1] == correct[0].img && currentPlayer == $p02Name.val()) { //if player 2 is playing, and picks the correct answer add score
       console.log('CORRECTTT!!!');
       $('.head').html('<div><img src= ' + playerHeadChoices[playerHeadChoices.length-1] + '></div>');
@@ -199,7 +199,7 @@ function storeFaceChoices() {
 }
 
 function checkFaces() { //when check button is clicked, check if the last click was correct, either correct or wrong, append the item and store it to the choices array
-    console.log("clicked!")
+    console.log("checkFaces running!")
     if ( playerFaceChoices[playerFaceChoices.length-1] == correct[1].img && currentPlayer == $p01Name.val()) {
       console.log('CORRECTTT!!!');
       $('.face').html('<div><img src= ' + playerFaceChoices[playerFaceChoices.length-1] + '></div>');
@@ -222,4 +222,59 @@ function thirdRound() {
   $('#third').removeClass('hidden');
   $('.head').html('<div><img src= ' + playerChoices[0] + '></div>');
   $('.face').html('<div><img src= ' + playerChoices[1] + '></div>');
+  player02Turn();
+  countdown01();
+  showScore03();
+  displayUppers();
+  storeUpperChoices();
+}
+
+function showScore03() {
+  $('#check').off('click', checkFaces);
+  $('#check').one('click', checkUppers);
+  $('#next').off('click', thirdRound);
+  $('#next').one('click', fourthRound);
+}
+
+function displayUppers() {
+  $('#third').append('<div id="correct-upper" class="upper-option"><img src="images/Upper_Correct.png"</div>');
+  $('#third').append('<div class="upper-option"><img src="images/Upper_01.png"</div>');
+  $('#third').append('<div class="upper-option"><img src="images/Upper_02.png"</div>');
+  $('#third').append('<div class="upper-option"><img src="images/Upper_03.png"</div>');
+  $('#third').append('<div class="upper-option"><img src="images/Upper_04.png"</div>');
+  $('#third').append('<div class="upper-option"><img src="images/Upper_05.png"</div>');
+}
+
+var playerUpperChoices = [];
+function storeUpperChoices() {
+  $('.upper-option').on('click', function() {
+    if (timer != 0) {
+    playerUpperChoices.push($(this).children().attr('src'));
+    console.log(playerUpperChoices);
+    }
+  })
+}
+
+function checkUppers() { //when check button is clicked, check if the last click was correct, either correct or wrong, append the item and store it to the choices array
+  console.log("checkUppers running")
+  if ( playerUpperChoices[playerUpperChoices.length-1] == correct[2].img && currentPlayer == $p02Name.val()) {
+    console.log('CORRECTTT!!!');
+    $('.upper').html('<div><img src= ' + playerUpperChoices[playerUpperChoices.length-1] + '></div>');
+    game.player01.score = game.player01.score + 1;
+    $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
+    playerChoices.push(playerUpperChoices[playerUpperChoices.length-1]);
+    console.log(playerChoices)
+  } else if ( playerUpperChoices[playerUpperChoices.length-1] != correct[2].img && currentPlayer == $p02Name.val()) {
+    console.log('NOOOOOO!');
+    $('.upper').html('<div><img src= ' + playerUpperChoices[playerUpperChoices.length-1] + '></div>');
+    game.player02.score = game.player02.score - 2;
+    $('#player02-score').text($p02Name.val()+ "'s score: " + game.player02.score);
+    playerChoices.push(playerUpperChoices[playerUpperChoices.length-1]);
+    console.log(playerChoices);
+  }
+
+}
+
+function fourthRound() {
+  console.log("This is the fourth!")
 }
