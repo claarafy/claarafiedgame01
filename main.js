@@ -2,7 +2,7 @@ var timer;
 var game = {
   player01: {name: "", score: 0},
   player02: {name: "", score: 0},
-  time: 15
+  // time: 15
 }
 var currentPlayer;
 var $p01Name = $("input[name='p01-name']");
@@ -55,7 +55,8 @@ function showIns() {
 //when start button clicked, expose main picture
 function startGame() {
   clearAll();
-  $('#main').removeClass('hidden');//show the picture
+  $('#main').removeClass('hidden');
+  $('.timer').removeClass('hidden');//show the picture
   countdown00();
 };
 //countdown main screen
@@ -105,6 +106,7 @@ function countdown01() {
     if (timer == 0) {
       $('.timer').text('0');
       clearInterval(startCountdown);
+      $('#check').removeClass('hidden');
     }
     else {
     $('.timer').text('Time: ' + (timer -=  1));
@@ -115,19 +117,19 @@ function countdown01() {
 function showScore01() {
   $('#title-page').append('<div id="player01-score">' + $p01Name.val()+ "'s score: " + game.player01.score + '</div>');
   $('#title-page').append('<div id="player02-score">' + $p02Name.val() + "'s score: " + game.player02.score + '</div>');
-  $('#title-page').append('<button id="check">Check</button>');
-  $('#title-page').append('<button id="next">Next Round!</button>');
+  $('#title-page').append('<button id="check" class="hidden">Check</button>');
+  $('#title-page').append('<button id="next" class="hidden">Next Round!</button>');
   $('#check').one('click', checkHeads);
   $('#next').one('click', secondRound);
 }
 //display head options to pick from
 function displayHeads() {
-  $('#first').append('<div id="correct-head" class="head-option"><img src="images/Head_Correct.png"</div>');
-  $('#first').append('<div class="head-option"><img src="images/Head_01.png"</div>');
-  $('#first').append('<div class="head-option"><img src="images/Head_02.png"</div>');
-  $('#first').append('<div class="head-option"><img src="images/Head_03.png"</div>');
-  $('#first').append('<div class="head-option"><img src="images/Head_04.png"</div>');
-  $('#first').append('<div class="head-option"><img src="images/Head_05.png"</div>');
+  $('#first').append('<div id="correct-head" class="head-option"><img src="images/Head_Correct.png"></div>');
+  $('#first').append('<div class="head-option"><img src="images/Head_01.png"></div>');
+  $('#first').append('<div class="head-option"><img src="images/Head_02.png"></div>');
+  $('#first').append('<div class="head-option"><img src="images/Head_03.png"></div>');
+  $('#first').append('<div class="head-option"><img src="images/Head_04.png"></div>');
+  $('#first').append('<div class="head-option"><img src="images/Head_05.png"></div>');
 }
 //check if the clicked head is the correct answer
 var playerHeadChoices = [];
@@ -135,13 +137,16 @@ function storeHeadChoices() {
   $('.head-option').on('click', function() {
     if (timer != 0) {
     playerHeadChoices.push($(this).children().attr('src'));
+    $('.head').html("<img src=" + $(this).children().attr('src') + ">");
     console.log(playerHeadChoices);
     }
   })
 }
 //
 function checkHeads() { //when check button is clicked, check if the last click was correct, either correct or wrong, append the item and store it to the choices array
-    console.log("checkHeads running!")
+  console.log("checkHeads running!");
+  $('#check').addClass('hidden');
+  $('#next').removeClass('hidden');
     if ( playerHeadChoices[playerHeadChoices.length-1] == correctAnswers[0].img && currentPlayer == $p02Name.val()) { //if player 2 is playing, and picks the correct answer add score
       console.log('CORRECT HEAD!!');
       $('.head').html('<div><img src= ' + playerHeadChoices[playerHeadChoices.length-1] + '></div>');
@@ -165,8 +170,9 @@ function checkHeads() { //when check button is clicked, check if the last click 
       console.log(playerChoices);
     }
 }
-
+//second round
 function secondRound() {
+  $('#next').addClass('hidden');
   $('#first').addClass('hidden');
   $('#second').removeClass('hidden');
   $('.head').html('<div><img src= ' + playerChoices[0] + '></div>')
@@ -176,11 +182,8 @@ function secondRound() {
   displayFaces();
   storeFaceChoices();
 }
+
 function showScore02() {
-  // $('#title-page').append('<div id="player01-score">' + $p01Name.val()+ "'s score: " + game.player01.score + '</div>');
-  // $('#title-page').append('<div id="player02-score">' + $p02Name.val() + "'s score: " + game.player02.score + '</div>');
-  // $('#title-page').append('<button id="check">Check</button>');
-  // $('#title-page').append('<button id="next">Next Round!</button>');
   $('#check').off('click', checkHeads);
   $('#check').one('click', checkFaces);
   $('#next').off('click', secondRound);
@@ -201,6 +204,7 @@ function storeFaceChoices() {
   $('.face-option').on('click', function() {
     if (timer != 0) {
     playerFaceChoices.push($(this).children().attr('src'));
+    $('.face').html("<img src=" + $(this).children().attr('src') + ">");
     console.log(playerFaceChoices);
     }
   })
@@ -208,6 +212,8 @@ function storeFaceChoices() {
 
 function checkFaces() { //when check button is clicked, check if the last click was correct, either correct or wrong, append the item and store it to the choices array
     console.log("checkFaces running!")
+    $('#check').addClass('hidden');
+    $('#next').removeClass('hidden');
     if ( playerFaceChoices[playerFaceChoices.length-1] == correctAnswers[1].img && currentPlayer == $p01Name.val()) {
       console.log('CORRECTTT!!!');
       $('.face').html('<div><img src= ' + playerFaceChoices[playerFaceChoices.length-1] + '></div>');
@@ -231,8 +237,9 @@ function checkFaces() { //when check button is clicked, check if the last click 
       console.log(playerChoices);
     }
 }
-
+//third round
 function thirdRound() {
+  $('#next').addClass('hidden');
   $('#second').addClass('hidden');
   $('#third').removeClass('hidden');
   $('.head').html('<div><img src= ' + playerChoices[0] + '></div>');
@@ -265,6 +272,7 @@ function storeUpperChoices() {
   $('.upper-option').on('click', function() {
     if (timer != 0) {
     playerUpperChoices.push($(this).children().attr('src'));
+    $('.upper').html("<img src=" + $(this).children().attr('src') + ">");
     console.log(playerUpperChoices);
     }
   })
@@ -272,6 +280,8 @@ function storeUpperChoices() {
 
 function checkUppers() { //when check button is clicked, check if the last click was correct, either correct or wrong, append the item and store it to the choices array
   console.log("checkUppers running")
+  $('#check').addClass('hidden');
+  $('#next').removeClass('hidden');
   if ( playerUpperChoices[playerUpperChoices.length-1] == correctAnswers[2].img && currentPlayer == $p02Name.val()) {
     console.log('CORRECTTT!!!');
     $('.upper').html('<div><img src= ' + playerUpperChoices[playerUpperChoices.length-1] + '></div>');
@@ -297,6 +307,7 @@ function checkUppers() { //when check button is clicked, check if the last click
 }
 
 function fourthRound() {
+  $('#next').addClass('hidden');
   $('#third').addClass('hidden');
   $('#fourth').removeClass('hidden');
   $('.head').html('<div><img src= ' + playerChoices[0] + '></div>');
@@ -330,12 +341,15 @@ function storeLowerChoices() {
   $('.lower-option').on('click', function() {
     if (timer != 0) {
     playerLowerChoices.push($(this).children().attr('src'));
+    $('.lower').html("<img src=" + $(this).children().attr('src') + ">");
     console.log(playerLowerChoices);
     }
   })
 }
 function checkLowers() {
   console.log("checkLowers running")
+  $('#check').addClass('hidden');
+  $('#next').removeClass('hidden');
   if ( playerLowerChoices[playerLowerChoices.length-1] == correctAnswers[3].img && currentPlayer == $p02Name.val()) {
     console.log('CORRECTTT!!!');
     $('.lower').html('<div><img src= ' + playerLowerChoices[playerLowerChoices.length-1] + '></div>');
@@ -360,6 +374,7 @@ function checkLowers() {
   }
 }
 function fifthRound() {
+  $('#next').addClass('hidden');
   $('#fourth').addClass('hidden');
   $('#fifth').removeClass('hidden');
   $('.head').html('<div><img src= ' + playerChoices[0] + '></div>');
@@ -394,12 +409,15 @@ function storeFeetChoices() {
   $('.feet-option').on('click', function() {
     if (timer != 0) {
     playerFeetChoices.push($(this).children().attr('src'));
+    $('.feet').html("<img src=" + $(this).children().attr('src') + ">");
     console.log(playerFeetChoices);
     }
   })
 }
 function checkFeets() {
   console.log("checkFeets running")
+  $('#check').addClass('hidden');
+  $('#next').removeClass('hidden');
   if ( playerFeetChoices[playerFeetChoices.length-1] == correctAnswers[4].img && currentPlayer == $p01Name.val()) {
     console.log('CORRECTTT!!!');
     $('.feet').html('<div><img src= ' + playerFeetChoices[playerFeetChoices.length-1] + '></div>');
@@ -424,6 +442,7 @@ function checkFeets() {
   }
 }
 function sixthRound() {
+  $('#next').addClass('hidden');
   $('#fifth').addClass('hidden');
   $('#sixth').removeClass('hidden');
   $('.head').html('<div><img src= ' + playerChoices[0] + '></div>');
@@ -435,6 +454,7 @@ function sixthRound() {
   displayNames();
   showScore06();
   storeNameChoices();
+  $('#check').removeClass('hidden');
 }
 
 function showScore06() {
@@ -445,7 +465,7 @@ function showScore06() {
 }
 
 function displayNames() {
-  $('#sixth').append('<div class="name-option"><form><input type="radio" name="name-option" value="correct"><label for="Skaflowne">Skaflowne</label><br><input type="radio" name="name-option" value=""><label for="Skuflowne">Skuflowne</label><br><input type="radio" name="name-option" value=""><label for="Skeflowne">Skeflowne</label><br><input type="radio" name="name-option" value=""><label for="Skiflowne">Skiflowne</label><br><input type="radio" name="name-option" value=""><label for="Skflowne">Skflowne</label><br></form></div>');
+  $('#sixth').append('<div class="name-option">What was his/her name?<form><input type="radio" name="name-option" value="correct"><label for="Skaflowne">Skaflowne</label><br><input type="radio" name="name-option" value=""><label for="Skuflowne">Skuflowne</label><br><input type="radio" name="name-option" value=""><label for="Skeflowne">Skeflowne</label><br><input type="radio" name="name-option" value=""><label for="Skiflowne">Skiflowne</label><br><input type="radio" name="name-option" value=""><label for="Skflowne">Skflowne</label><br></form></div>');
 }
 
 var playerNameChoices = [];
@@ -455,6 +475,9 @@ function storeNameChoices() {
   })
 }
 function checkNames() {
+  $('#check').addClass('hidden');
+  $('#next').removeClass('hidden');
+  $('#next').text('Show Score!');
   if ( playerNameChoices[playerNameChoices.length - 1] == "correct" && currentPlayer == $p01Name.val()) {
     console.log('Correct Name!');
     game.player01.score = game.player01.score + 1;
@@ -473,6 +496,12 @@ function checkNames() {
 function scoreRound() {
   $('#sixth').addClass('hidden');
   $('#last').removeClass('hidden');
+  $('#check').addClass('hidden');
+  $('#next').addClass('hidden');
+  $('.timer').addClass('hidden');
+  $('#p01-input').text($p01Name.val() +" & " + $p02Name.val() + "'s work'")
+  $('#player01-score').addClass('hidden');
+  $('#player02-score').addClass('hidden');
   displayPlayerChoices();
   showAnswers();
   reportCard();
@@ -485,7 +514,7 @@ function displayPlayerChoices() {
   $('#playerBody').append('<div><img src= ' + playerChoices[2] + '></div>');
   $('#playerBody').append('<div><img src= ' + playerChoices[3] + '></div>');
   $('#playerBody').append('<div><img src= ' + playerChoices[4] + '></div>');
-  $('#playerBody').append("<div>Name: " + $('input:radio:checked').next('label').text() + "</div>");
+  $('#playerBody').append("<div id='nameChecked'>Name: " + $('input:radio:checked').next('label').text() + "</div>");
 }
 var correctAnswers = [
     { name:'head', img: "images/Head_Correct.png" },
@@ -496,7 +525,7 @@ var correctAnswers = [
     { name: 'characterName', value: "correct"}
   ];
 function showAnswers() {
-  $('#checkAnswer').on('click', function () {
+  $('#checkAnswerButton').on('click', function () {
     $('#solution>img').removeClass('hidden');
     $('#solution>p').removeClass('hidden');
     if (playerChoices[0] == correctAnswers[0].img) {
@@ -539,7 +568,7 @@ function showAnswers() {
   })
 }
 function reportCard() {
-  $('#checkFinalScore').on('click', function() {
+  $('#checkFinalScore').one('click', function() {
   $('#p01final').append($p01Name.val()+ "'s score: " + game.player01.score);
   $('#p02final').append($p02Name.val()+ "'s score: " + game.player02.score);
   $('#resetArea').removeClass('hidden');
@@ -549,6 +578,6 @@ function reportCard() {
 function reset() {
   $('#reset').on('click', function() {
     $body.empty();
-    $body.append("<div id='life'>You don't get to reset lives, so no reset on this game.</div>")
+    $body.append("<div id='life'>You don't get to reset lives, so there is no reset on this game.</div>")
   })
 }

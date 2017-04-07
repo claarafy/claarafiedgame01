@@ -1,71 +1,102 @@
 body {
-  background-color: aqua;
+  background-color: plum;
   font-family: 'Amatic SC', cursive;
 }
 #title-page {
   text-align: center;
-  margin-top: 200px;
+  margin-top: 300px;
 }
 #title-heading {
-  font-size: 100px;
+  font-size: 150px;
   margin-bottom: 30px;
   color: white;
+
 }
 #title-button {
   font-family: 'Amatic SC', cursive;
-  font-size: 25px;
+  font-size: 30px;
   border-radius: 10px;
   border: 1px grey dotted;
   background-color: white;
+  font-weight: 800;
 }
 .player-input {
-  font-size: 25px;
+  font-size: 40px;
   margin-bottom: 30px;
 }
 #p01-input {
   margin-right: 20px;
+  font-weight: 800;
 }
 #p02-input {
   margin-left: 20px;
+  font-weight: 800;
+}
+#p01-input > input {
+  height: 40px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-family: 'Amatic SC', cursive;
+}
+#p02-input > input {
+  height: 40px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-family: 'Amatic SC', cursive;
 }
 #how-box {
   text-align: center;
 }
 #how {
   font-family: 'Amatic SC', cursive;
-  font-size: 25px;
+  font-size: 30px;
+  font-weight: 800;
   background-color: tomato;
   border-radius: 10px;
   border: 1px grey dotted;
 }
 #instructions {
-  font-size: 30px;
+  font-size: 45px;
   text-align: center;
-  list-style-position:inside
+  list-style-position: inside;
+  font-weight: 800;
 }
 #instructions ol {
   padding-left: 0;
+  font-weight: 800;
 }
 #start-box {
   text-align: center;
 }
 #start {
   font-family: 'Amatic SC', cursive;
-  font-size: 25px;
+  font-size: 30px;
+  font-weight: 800;
   background-color: tomato;
   border-radius: 10px;
   border: 1px grey dotted;
 }
 #main-picture {
-  border: 1px black solid;
   width: 800px;
   height: 800px;
   margin: 0 auto;
   text-align: center;
 }
-.timer {
+.timer00 {
   text-align: center;
-  font-size: 25px;
+  font-size: 40px;
+  margin-left: 1.5%;
+  margin-bottom: 20px;
+}
+.timer01 {
+  position: absolute;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 40px;
+  margin-left: 1.5%;
+  margin-bottom: 20px;
 }
 .hidden {
   display: none;
@@ -75,81 +106,98 @@ body {
   width: 1200px;
   height: 800px;
   margin: 0 auto;
-  border: 1px black solid;
 }
 #main-picture {
   width: 400px;
   height: 705px;
-  /*background: url("images/barebody.png");*/
+}
+#player01-score, #player02-score {
+  font-size: 40px;
+  font-weight: 700;
 }
 #theName {
   font-weight: 400;
 }
 #check, #next {
   font-family: 'Amatic SC', cursive;
+  width: 250px;
   font-size: 25px;
   background-color: tomato;
   border-radius: 10px;
   border: 1px grey dotted;
+  margin-left: 20px; margin-right: 20px;
 }
 #first, #second, #third, #fourth, #fifth, #sixth {
   text-align: center;
-  width: 1200px;
+  width: 100%;
   height: 800px;
   margin: 0 auto;
-  border: 1px black solid;
+  margin-top: 5%;
+  float: left;
 }
 #first-picture, #second-picture, #third-picture, #fourth-picture, #fifth-picture, #sixth-picture {
   width: 400px;
   height: 705px;
+  margin-left: 20%;
   background: url('images/barebody.png');
-  margin: 0 auto;
-  border: 1px black solid;
+  float: left;
 }
 #corr-head {
   width: 400px; height: 100px;
-  /*border: 0.5px black solid;*/
+  font-size: 20px;
   background: url('images/Head_Correct.png');
 }
 #corr-face {
   width: 400px; height: 100px;
-  /*border: 0.5px black solid;*/
   background: url('images/Face_Correct.png');
 }
 #corr-upper {
   width: 400px; height: 200px;
-  /*border: 0.5px black solid;*/
   background: url('images/Upper_Correct.png');
 }
 #corr-lower {
   width: 400px; height: 200px;
-  /*border: 0.5px black solid;*/
   background: url('images/Lower_Correct.png');
 }
 #corr-feet {
   width: 400px; height: 100px;
-  /*border: 0.5px black solid;*/
   background: url('images/Feet_Correct.png');
+}
+.head-option {
+  /*float: left;*/
+  /*display: inline-block;*/
+}
+.upper-option, .lower-option {
+  width: 410px;
+  height: 210px;
+  float: left;
+  display: inline-block;
+}
+.name-option {
+  font-size: 50px;
+  color: white;
+  font-weight: white;
+}
+.name-option>form{
+  font-size: 50px;
+  padding-top: 20px;
+  color: tomato;
+  font-weight: 700;
 }
 .head {
   width: 400px; height: 100px;
-  border: 0.5px black solid;
 }
 .face {
   width: 400px; height: 100px;
-  border: 0.5px black solid;
 }
 .upper {
   width: 400px; height: 200px;
-  border: 0.5px black solid;
 }
 .lower {
   width: 400px; height: 200px;
-  border: 0.5px black solid;
 }
 .feet {
   width: 400px; height: 100px;
-  border: 0.5px black solid;
 }
 #playerBody {
   float: left;
@@ -166,15 +214,71 @@ body {
 #headAnswer, #faceAnswer, #feetAnswer {
   width: 200px;
   height: 100px;
-  border: 1px black solid;
+  border: 1px grey dotted;
+  border-radius: 10px;
 }
 #upperAnswer, #lowerAnswer {
   width: 200px;
   height: 200px;
-  border: 1px black solid;
+  border: 1px grey dotted;
+  border-radius: 10px;
 }
 #nameAnswer {
   width: 200px;
   height: 50px;
-  border: 1px black solid;
+  border: 1px grey dotted;
+  border-radius: 10px;
+}
+#nameChecked {
+  font-size: 30px;
+  font-weight: 800;
+  text-align: center;
+}
+#checkAnswer div {
+  font-size: 30px;
+  font-weight: 800;
+  width: 250px;
+  text-align: center;
+}
+#checkAnswerButton{
+  font-family: 'Amatic SC', cursive;
+  width: 250px;
+  font-size: 20px;
+  background-color: salmon;
+  color: white;
+  border-radius: 10px;
+  border: 1px grey dotted;
+}
+#checkFinalScore, #reset {
+  font-family: 'Amatic SC', cursive;
+  background-color: tomato;
+  font-size: 20px;
+  color: white;
+  border-radius: 10px;
+  border: 1px grey dotted;
+}
+#solution {
+  font-size: 30px;
+  font-weight: 800;
+  text-align: center;
+}
+#finalScore {
+  font-size: 50px;
+  font-weight: 900;
+  color: aqua;
+}
+#last {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+#life {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 250px;
+  font-weight: 900;
+}
+#headAnswer, #faceAnswer, #upperAnswer, #lowerAnswer, #feetAnswer, #nameAnswer{
+  margin: 0 auto;
+  margin: 5px;
 }
