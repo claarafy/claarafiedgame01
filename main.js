@@ -100,7 +100,7 @@ function player02Turn() {
 
 //countdown first round
 function countdown01() {
-  timer = 3;
+  timer = 1;
   $('.timer').text('Time: '+timer);
   var startCountdown = setInterval(function() {
     if (timer == 0) {
@@ -499,7 +499,8 @@ function scoreRound() {
   $('#check').addClass('hidden');
   $('#next').addClass('hidden');
   $('.timer').addClass('hidden');
-  $('#p01-input').text($p01Name.val() +" & " + $p02Name.val() + "'s work'")
+  $('#p01-input').text($p01Name.val() +" & " + $p02Name.val() + "'s work!");
+  $('#p02-input').addClass('hidden');
   $('#player01-score').addClass('hidden');
   $('#player02-score').addClass('hidden');
   displayPlayerChoices();
@@ -516,18 +517,12 @@ function displayPlayerChoices() {
   $('#playerBody').append('<div><img src= ' + playerChoices[4] + '></div>');
   $('#playerBody').append("<div id='nameChecked'>Name: " + $('input:radio:checked').next('label').text() + "</div>");
 }
-var correctAnswers = [
-    { name:'head', img: "images/Head_Correct.png" },
-    { name:'face', img: "images/Face_Correct.png"},
-    { name:'upper', img: "images/Upper_Correct.png"},
-    { name:'lower', img: "images/Lower_Correct.png"},
-    { name:'feet', img: "images/Feet_Correct.png"},
-    { name: 'characterName', value: "correct"}
-  ];
+
 function showAnswers() {
   $('#checkAnswerButton').on('click', function () {
     $('#solution>img').removeClass('hidden');
     $('#solution>p').removeClass('hidden');
+    $('#checkAnswerButton').addClass('hidden');
     if (playerChoices[0] == correctAnswers[0].img) {
       $('#headAnswer').text($p02Name.val() + " was correct! +1")
     }
@@ -578,6 +573,6 @@ function reportCard() {
 function reset() {
   $('#reset').on('click', function() {
     $body.empty();
-    $body.append("<div id='life'>You don't get to reset lives, so there is no reset on this game.</div>")
+    $body.append("<div id='life'>You don't get to reset lives, so there is no reset on this game..</div>")
   })
 }
