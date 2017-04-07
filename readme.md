@@ -13,6 +13,8 @@ __Score:__ <br>
 
 If correct, score goes up by 1. If incorrect, drops by 2. Players will have an access to their scores each round, but also the final score will be shown on the scoreboard during the last bit of the game.
 
+[Click to play the game] (https://claarafy.github.io/claarafiedgame01/)
+
 __Development & Technologies:__ <br>
 
 Built on HTML, CSS, majorly jQuery and a bit of javaScript.
