@@ -562,6 +562,7 @@ function showAnswers() {
     $('#finalScore').removeClass('hidden');
   })
 }
+
 function reportCard() {
   $('#checkFinalScore').one('click', function() {
   $('#p01final').append($p01Name.val()+ "'s score: " + game.player01.score);
