@@ -2,7 +2,6 @@ var timer;
 var game = {
   player01: {name: "", score: 0},
   player02: {name: "", score: 0},
-  // time: 15
 }
 var currentPlayer;
 var $p01Name = $("input[name='p01-name']");
