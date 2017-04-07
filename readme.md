@@ -3,6 +3,7 @@
 
 Games, nowadays, are more than just entertainment. Scope of games has expanded so much to a point where it blurs the line between  reality and virtuality. For me, memories of the games I played have been terminated a while ago. So, I figured I should recreate those lost memories by building this game. 
 
+
 __Game Introduction:__ <br>
 
 This game requires 2 players, a little bit of memory and quick-action. When the game begins, a picture of one character (drawn by me...) will be exposed to both characters for 3 seconds. Within that 3 seconds, both players have to remember as much as possible about the character, which will mostly be regarding attire for this version. 
