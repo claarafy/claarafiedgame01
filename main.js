@@ -99,7 +99,7 @@ function player02Turn() {
 
 //countdown first round
 function countdown01() {
-  timer = 1;
+  timer = 7;
   $('.timer').text('Time: '+timer);
   var startCountdown = setInterval(function() {
     if (timer == 0) {
