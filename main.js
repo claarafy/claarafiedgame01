@@ -578,6 +578,6 @@ function reportCard() {
 function reset() {
   $('#reset').on('click', function() {
     $body.empty();
-    $body.append("<div id='life'>You don't get to reset lives, so there is no reset on this game..</div>")
+    $body.append("<div id='life'>You don't get to reset lives.</div>")
   })
 }
