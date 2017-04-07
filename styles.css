@@ -1,5 +1,7 @@
+
 body {
-  background-color: gold;
+  background: url("images/palm01.jpg");
+  /*background-color: gold;*/
   font-family: 'Amatic SC', cursive;
 }
 #title-page {
@@ -10,7 +12,6 @@ body {
   font-size: 150px;
   margin-bottom: 30px;
   color: white;
-
 }
 #title-button {
   font-family: 'Amatic SC', cursive;
@@ -21,7 +22,9 @@ body {
   font-weight: 800;
 }
 .player-input {
-  font-size: 40px;
+  font-size: 50px;
+  color: white;
+  font-weight: 900;
   margin-bottom: 30px;
 }
 #p01-input {

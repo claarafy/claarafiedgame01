@@ -24,8 +24,13 @@ var $title = $('#title-heading');
 var $titlePage = $('#title-page');
 
 $titleButton.on('click', function() {
+  noPalm();
   redoTitle();
 });
+
+function noPalm() {
+  $('body').css({background: 'gold'})
+}
 //clear everything in the body
 function clearAll() {
   $('*').off();
@@ -561,6 +566,7 @@ function showAnswers() {
     $('#finalScore').removeClass('hidden');
   })
 }
+
 function reportCard() {
   $('#checkFinalScore').one('click', function() {
   $('#p01final').append($p01Name.val()+ "'s score: " + game.player01.score);
