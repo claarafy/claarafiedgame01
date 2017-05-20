@@ -16,6 +16,24 @@ var correctAnswers = [
   ];
 var playerChoices = [];
 
+//clear everything in the body
+function clearAll() {
+  $('*').off();
+  $container.empty();
+  $('*').off();
+}
+//who's turn is it
+function player01Turn() {
+  currentPlayer = $p01Name.val();
+  $('#p01-input').css({fontSize: '40px', color: 'tomato', fontWeight: '800'});//emphasize p01
+  $('#p02-input').css({fontSize: '25px', color: 'black', fontWeight: '200'});
+}
+function player02Turn() {
+  currentPlayer = $p02Name.val();
+  $('#p02-input').css({fontSize: '40px', color: 'tomato', fontWeight: '800'});//emphasize p02
+  $('#p01-input').css({fontSize: '25px', color: 'black', fontWeight: '200'});
+}
+
 //when "jQuery link" button is clicked, redo the titles
 var $body = $('body');
 var $container = $('.container');
@@ -23,7 +41,9 @@ var $titleButton = $('#title-button');
 var $title = $('#title-heading');
 var $titlePage = $('#title-page');
 
+//when "jQuery link" button is clicked, change the background picture, and redo the title
 $titleButton.on('click', function() {
+  console.log("clicked!")
   noPalm();
   redoTitle();
 });
@@ -63,7 +83,7 @@ function startGame() {
   $('.timer').removeClass('hidden');//show the picture
   countdown00();
 };
-//countdown main screen
+//countdown for main screen
 function countdown00() {
   timer = 3;
   $('.timer').text('Time: ' + timer);
@@ -80,7 +100,7 @@ function countdown00() {
   }, 1000);
 }
 
-//first round: pick heads
+//first round
 function firstRound() {
   $('#first').removeClass('hidden'); //reveal first round (html tag)
   player02Turn(); //player 2's playing
@@ -89,20 +109,7 @@ function firstRound() {
   displayHeads();
   storeHeadChoices();
 }
-
-//who's turn is it
-function player01Turn() {
-  currentPlayer = $p01Name.val();
-  $('#p01-input').css({fontSize: '40px', color: 'tomato', fontWeight: '800'});//emphasize p01
-  $('#p02-input').css({fontSize: '25px', color: 'black', fontWeight: '200'});
-}
-function player02Turn() {
-  currentPlayer = $p02Name.val();
-  $('#p02-input').css({fontSize: '40px', color: 'tomato', fontWeight: '800'});//emphasize p02
-  $('#p01-input').css({fontSize: '25px', color: 'black', fontWeight: '200'});
-}
-
-//countdown first round
+//countdown for all rounds
 function countdown01() {
   timer = 7;
   $('.timer').text('Time: '+timer);
@@ -146,8 +153,8 @@ function storeHeadChoices() {
     }
   })
 }
-//
-function checkHeads() { //when check button is clicked, check if the last click was correct, either correct or wrong, append the item and store it to the choices array
+//when check button is clicked, check if the last click was correct, either correct or wrong, append the item and store it to the choices array
+function checkHeads() {
   console.log("checkHeads running!");
   $('#check').addClass('hidden');
   $('#next').removeClass('hidden');
@@ -186,14 +193,14 @@ function secondRound() {
   displayFaces();
   storeFaceChoices();
 }
-
+//show score02
 function showScore02() {
   $('#check').off('click', checkHeads);
   $('#check').one('click', checkFaces);
   $('#next').off('click', secondRound);
   $('#next').one('click', thirdRound);
 }
-
+//display face options
 function displayFaces() {
   $('#second').append('<div id="correct-face" class="face-option"><img src="images/Face_Correct.png"</div>');
   $('#second').append('<div class="face-option"><img src="images/Face_01.png"</div>');
@@ -202,7 +209,7 @@ function displayFaces() {
   $('#second').append('<div class="face-option"><img src="images/Face_04.png"</div>');
   $('#second').append('<div class="face-option"><img src="images/Face_05.png"</div>');
 }
-
+//store player's face choices
 var playerFaceChoices = [];
 function storeFaceChoices() {
   $('.face-option').on('click', function() {
@@ -213,7 +220,7 @@ function storeFaceChoices() {
     }
   })
 }
-
+//check if faces options TODO figure out if there's a better way to check player's options
 function checkFaces() { //when check button is clicked, check if the last click was correct, either correct or wrong, append the item and store it to the choices array
     console.log("checkFaces running!")
     $('#check').addClass('hidden');
@@ -241,6 +248,7 @@ function checkFaces() { //when check button is clicked, check if the last click 
       console.log(playerChoices);
     }
 }
+
 //third round
 function thirdRound() {
   $('#next').addClass('hidden');
@@ -310,6 +318,7 @@ function checkUppers() { //when check button is clicked, check if the last click
   }
 }
 
+//fourth round
 function fourthRound() {
   $('#next').addClass('hidden');
   $('#third').addClass('hidden');
@@ -377,6 +386,7 @@ function checkLowers() {
     console.log(playerChoices);
   }
 }
+//fifth round
 function fifthRound() {
   $('#next').addClass('hidden');
   $('#fourth').addClass('hidden');
@@ -445,6 +455,7 @@ function checkFeets() {
     console.log(playerChoices);
   }
 }
+//sixth round
 function sixthRound() {
   $('#next').addClass('hidden');
   $('#fifth').addClass('hidden');
@@ -497,6 +508,7 @@ function checkNames() {
   }
 }
 
+//check score
 function scoreRound() {
   $('#sixth').addClass('hidden');
   $('#last').removeClass('hidden');
@@ -566,7 +578,7 @@ function showAnswers() {
     $('#finalScore').removeClass('hidden');
   })
 }
-
+//final score
 function reportCard() {
   $('#checkFinalScore').one('click', function() {
   $('#p01final').append($p01Name.val()+ "'s score: " + game.player01.score);
@@ -574,7 +586,7 @@ function reportCard() {
   $('#resetArea').removeClass('hidden');
   })
 }
-
+//TODO set up reset button
 function reset() {
   $('#reset').on('click', function() {
     $body.empty();
