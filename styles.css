@@ -6,10 +6,11 @@ body {
 }
 #title-page {
   text-align: center;
-  margin-top: 300px;
+  margin: 0 auto;
+  margin-top: 10%;
 }
 #title-heading {
-  font-size: 150px;
+  font-size: 120px;
   margin-bottom: 30px;
   color: white;
 }
@@ -20,6 +21,9 @@ body {
   border: 1px grey dotted;
   background-color: white;
   font-weight: 800;
+}
+.container {
+
 }
 .player-input {
   font-size: 50px;

@@ -69,7 +69,7 @@ function redoTitle() {
 }
 //when "how to play button" is clicked show Instructions
 function showIns() {
-  $container.append("<div id='instructions'><p>Instructions</p><ol><li>REMEMBER!!!!</li><li>WHICH HEAD?</li><li>WHICH FACE?</li><li>WHICH UPPER?</li><li>WHICH LOWER?</li><li>WHICH FEET?</li><li>NAME?</li><ol></div>");
+  $container.append("<div id='instructions'><p>Remember everything about the character within the time limit.</p><p>choose the correct body parts in following stages!</p></div>");
   $container.append("<div id='start-box'><button id='start'>START</button></div>");
   $('#start').on('click', function() {
     clearAll();
